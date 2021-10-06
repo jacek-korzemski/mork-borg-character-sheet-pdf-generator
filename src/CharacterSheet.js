@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { names } from "./data/names";
 
 const CharacterSheetWrapper = styled.div`
   width: 100%;
@@ -145,27 +146,19 @@ const CharacterSheetWrapper = styled.div`
 const CharacterSheet = () => {
   return (
     <CharacterSheetWrapper>
-      <h1 className="character-name">Random Name</h1>
+      <h1 className="character-name">{names[Math.floor(Math.random() * names.length)]}</h1>
       <div className="params">
         <div className="box">
           <div className="name">Strength</div>
-          {/* <div className="param">0</div>
-          <div className="line"></div> */}
         </div>
         <div className="box">
           <div className="name">Agility</div>
-          {/* <div className="param">0</div>
-          <div className="line"></div> */}
         </div>
         <div className="box">
           <div className="name">Presence</div>
-          {/* <div className="param">0</div>
-          <div className="line"></div> */}
         </div>
         <div className="box">
           <div className="name">Toughness</div>
-          {/* <div className="param">0</div>
-          <div className="line"></div> */}
         </div>
       </div>
 

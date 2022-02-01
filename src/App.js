@@ -1,22 +1,13 @@
 import React from "react";
-import Grid from "./components/Grid";
-import CharacterSheet from "./components/CharacterSheet";
+import Grid from "components/Grid";
+import CharacterSheet from "components/CharacterSheet";
+import { randomInt, randomElementFromArray } from "utils/randomizers";
 import ReactToPdf from "react-to-pdf";
-import { armor } from "./data/armor";
-import { weapons } from "./data/weapons";
+import { armor } from "data/armor";
+import { weapons } from "data/weapons";
 
 const App = () => {
   const ref = React.createRef();
-
-  const randomInt = (min, max) => {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min)) + min;
-  };
-
-  const randomElementFromArray = (array) => {
-    return array[Math.floor(Math.random() * array.length)];
-  };
 
   const generateCharacter = () => {
     return (

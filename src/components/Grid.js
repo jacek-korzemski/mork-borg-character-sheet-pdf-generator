@@ -1,7 +1,6 @@
-import React from "react";
 import styled from "styled-components";
 
-const GridWrapper = styled.div`
+const Grid = styled.div`
   margin: 8px 4px;
   padding: 16px;
   min-width: 750px;
@@ -19,9 +18,5 @@ const GridWrapper = styled.div`
   width: 100%;
   height: 100%;
 `;
-
-const Grid = (props) => {
-  return <GridWrapper>{props.children}</GridWrapper>;
-};
 
 export default Grid;

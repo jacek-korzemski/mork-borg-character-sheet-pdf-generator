@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { names } from "./data/names";
+import { names } from "../data/names";
 
 const CharacterSheetWrapper = styled.div`
   width: 100%;

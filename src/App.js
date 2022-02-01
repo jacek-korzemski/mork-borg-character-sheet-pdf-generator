@@ -1,10 +1,9 @@
 import React from "react";
-import Grid from "./Grid";
-import CharacterSheet from "./CharacterSheet";
+import Grid from "./components/Grid";
+import CharacterSheet from "./components/CharacterSheet";
 import ReactToPdf from "react-to-pdf";
 import { armor } from "./data/armor";
 import { weapons } from "./data/weapons";
-import "./App.css";
 
 const App = () => {
   const ref = React.createRef();

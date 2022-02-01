@@ -1,5 +1,5 @@
 import React from "react";
-import Grid from "components/Grid";
+import Grid from "styled-components/Grid";
 import CharacterSheet from "components/CharacterSheet";
 import { randomInt, randomElementFromArray } from "utils/randomizers";
 import ReactToPdf from "react-to-pdf";

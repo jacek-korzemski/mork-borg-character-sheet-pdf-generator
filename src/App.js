@@ -56,7 +56,7 @@ const App = () => {
                 <ReactToPdf targetRef={ref} filename="4-more-to-kill.pdf">
                     {({ toPdf }) => <button onClick={toPdf}>Generate pdf</button>}
                 </ReactToPdf>
-                <button onClick={() => setArmor([...armor])}>Refresh data</button>
+                <button onClick={() => setEquipement([...equipement])}>Refresh data</button>
             </Configuration>
         </AppContext.Provider>
     );

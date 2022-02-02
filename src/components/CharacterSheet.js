@@ -39,7 +39,7 @@ const CharacterSheet = ({ player }) => {
                     <div className="name">Weapon</div>
                 </div>
                 <div className="armor">
-                    <div className="value">{player.weapon}</div>
+                    <div className="value">{player.armor}</div>
                     <div className="name">Armor</div>
                 </div>
             </div>

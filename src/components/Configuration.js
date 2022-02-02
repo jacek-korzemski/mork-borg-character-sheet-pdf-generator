@@ -1,54 +1,54 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import Sidebar from 'styled-components/Sidebar';
 import ButtonSelect from "styled-components/ButtonSelect";
-import { armor } from "data/armor";
-import { weapons } from "data/weapons";
+import { armor as initialArmor } from "data/armor";
+import { weapons as initiialWeapons } from "data/weapons";
+import { AppContext } from "App";
 
 const Configuration = (props) => {
-    const [selectedArmor, setSelectedArmor] = useState([...armor]);
-    const [selectedWeapons, setSelectedWeapons] = useState([...weapons]);
+    const app = useContext(AppContext);
 
     const toggleArmor = (elem) => {
-        let newSelectedArmor = []
-        if (selectedArmor.includes(elem)) {
-            newSelectedArmor = [...selectedArmor].filter((find) => {
+        let newArmor = []
+        if (app.armor.includes(elem)) {
+            newArmor = [...app.armor].filter((find) => {
                 return find !== elem;
             })
         } else {
-            newSelectedArmor = [...selectedArmor, elem];
+            newArmor = [...app.armor, elem];
         }
-        setSelectedArmor(newSelectedArmor)
+        app.setArmor(newArmor)
     }
 
     const toggleWeapons = (elem) => {
-        let newSelectedWeapons = []
-        if (selectedWeapons.includes(elem)) {
-            newSelectedWeapons = [...selectedWeapons].filter((find) => {
+        let newWeapons = []
+        if (app.weapons.includes(elem)) {
+            newWeapons = [...app.weapons].filter((find) => {
                 return find !== elem;
             })
         } else {
-            newSelectedWeapons = [...selectedWeapons, elem];
+            newWeapons = [...app.weapons, elem];
         }
-        setSelectedWeapons(newSelectedWeapons)
+        app.setWeapons(newWeapons)
     }
 
     return <Sidebar open={props.open}>
         <h2>Configuration</h2>
         <h3>Availible weapons</h3>
-        {weapons.map((elem, index) => (
+        {initiialWeapons.map((elem, index) => (
             <ButtonSelect
                 key={index}
-                selected={selectedWeapons.includes(elem)}
+                selected={app.weapons.includes(elem)}
                 onClick={() => toggleWeapons(elem)}
             >
                 {elem}
             </ButtonSelect>
         ))}
         <h3>Availible Armor</h3>
-        {armor.map((elem, index) => (
+        {initialArmor.map((elem, index) => (
             <ButtonSelect
                 key={index}
-                selected={selectedArmor.includes(elem)}
+                selected={app.armor.includes(elem)}
                 onClick={() => toggleArmor(elem)}
             >
                 {elem}

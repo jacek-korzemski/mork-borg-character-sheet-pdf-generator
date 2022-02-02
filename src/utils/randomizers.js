@@ -5,5 +5,8 @@ export const randomInt = (min, max) => {
 };
 
 export const randomElementFromArray = (array) => {
+    if (array.length === 0) {
+        return "-";
+    }
     return array[Math.floor(Math.random() * array.length)];
 };

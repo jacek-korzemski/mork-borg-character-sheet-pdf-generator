@@ -1,15 +1,21 @@
-import React from "react";
+import React, { createContext, useState } from "react";
 import Grid from "styled-components/Grid";
 import Configuration from "components/Configuration";
 import CharacterSheet from "components/CharacterSheet";
-import { generateCharacter } from "utils/generators";
+import RandomCharacter from "components/RandomCharacter";
 import ReactToPdf from "react-to-pdf";
+import { armor as initialArmor } from "data/armor";
+import { weapons as initiialWeapons } from "data/weapons";
+
+export const AppContext = createContext({});
 
 const App = () => {
     const ref = React.createRef();
+    const [armor, setArmor] = useState([...initialArmor]);
+    const [weapons, setWeapons] = useState([...initiialWeapons]);
 
     return (
-        <React.Fragment>
+        <AppContext.Provider value={{ armor: armor, weapons: weapons, setArmor: setArmor, setWeapons: setWeapons }}>
             <div style={{ margin: "0 auto", width: "fit-content", position: "relative" }}>
                 <div ref={ref}>
                     <Grid>
@@ -24,9 +30,9 @@ const App = () => {
                         </div>
                         <div>
                             <div className="initial-data-wrapper">
-                                {generateCharacter()}
-                                {generateCharacter()}
-                                {generateCharacter()}
+                                <RandomCharacter />
+                                <RandomCharacter />
+                                <RandomCharacter />
                             </div>
                         </div>
                     </Grid>
@@ -40,8 +46,9 @@ const App = () => {
                         </button>
                     )}
                 </ReactToPdf>
+                <button onClick={() => setArmor([...armor])}>Refresh data</button>
             </Configuration>
-        </React.Fragment>
+        </AppContext.Provider>
     );
 };
 

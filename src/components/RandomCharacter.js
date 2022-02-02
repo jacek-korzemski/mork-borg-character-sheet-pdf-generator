@@ -1,10 +1,9 @@
-import { armor as initialArmor } from "data/armor";
-import { weapons as initialWeapons } from "data/weapons";
+import React, { useContext } from 'react';
+import { AppContext } from 'App';
 import { randomInt, randomElementFromArray } from "utils/randomizers";
 
-export const generateCharacter = (armorList, weaponList) => {
-    const armor = armorList ? [...armorList] : [...initialArmor];
-    const weapons = weaponList ? [...weaponList] : [...initialWeapons];
+const RandomCharacter = () => {
+    const app = useContext(AppContext);
 
     return (
         <div className="initial-data">
@@ -28,13 +27,13 @@ export const generateCharacter = (armorList, weaponList) => {
             </p>
             <p>
                 Armor: <br />
-                <strong>{randomElementFromArray(armor)}</strong>
+                <strong>{randomElementFromArray(app.armor)}</strong>
                 <br />
                 <br />
             </p>
             <p>
                 Weapon: <br />
-                <strong>{randomElementFromArray(weapons)}</strong>
+                <strong>{randomElementFromArray(app.weapons)}</strong>
                 <br />
                 <br />
             </p>
@@ -45,3 +44,5 @@ export const generateCharacter = (armorList, weaponList) => {
         </div>
     );
 };
+
+export default RandomCharacter;

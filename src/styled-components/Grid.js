@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const Grid = styled.div`
-  margin: 8px 4px;
+  margin: 0 4px 8px 4px;
   padding: 16px;
   min-width: 750px;
   max-width: 750px;

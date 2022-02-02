@@ -2,7 +2,8 @@ import React, { useContext } from 'react';
 import Sidebar from 'styled-components/Sidebar';
 import ButtonSelect from "styled-components/ButtonSelect";
 import { armor as initialArmor } from "data/armor";
-import { weapons as initiialWeapons } from "data/weapons";
+import { weapons as initialWeapons } from "data/weapons";
+import { equipement as initialEquipement } from "data/equipement";
 import { AppContext } from "App";
 
 const Configuration = (props) => {
@@ -32,28 +33,131 @@ const Configuration = (props) => {
         app.setWeapons(newWeapons)
     }
 
+    const toggleEquipement = (elem) => {
+        let newEquipement = [];
+        if (app.equipement.includes(elem)) {
+            newEquipement = [...app.equipement].filter((find) => {
+                return find !== elem;
+            })
+        } else {
+            newEquipement = [...app.equipement, elem];
+        }
+        app.setEquipement(newEquipement);
+    }
+
+    const selectAllWeapons = (bool) => {
+        if (bool) {
+            app.setWeapons([...initialWeapons]);
+        }
+        if (!bool) {
+            app.setWeapons([]);
+        }
+    }
+
+    const selectAllArmor = (bool) => {
+        if (bool) {
+            app.setArmor([...initialArmor]);
+        }
+        if (!bool) {
+            app.setArmor([]);
+        }
+    }
+
+    const selectAllEquipement = (bool) => {
+        if (bool) {
+            app.setEquipement([...initialEquipement]);
+        }
+        if (!bool) {
+            app.setEquipement([]);
+        }
+    }
+
     return <Sidebar open={props.open}>
         <h2>Configuration</h2>
         <h3>Availible weapons</h3>
-        {initiialWeapons.map((elem, index) => (
-            <ButtonSelect
-                key={index}
-                selected={app.weapons.includes(elem)}
-                onClick={() => toggleWeapons(elem)}
-            >
-                {elem}
-            </ButtonSelect>
-        ))}
+        <div className="box-list">
+            <div style={{ display: 'flex', width: '24%' }}>
+                <ButtonSelect
+                    onClick={() => selectAllWeapons(true)}
+                    selected={app.weapons.length === initialWeapons.length ? true : false}
+                    style={{ width: '50%' }}
+                >
+                    Select All
+                </ButtonSelect>
+                <ButtonSelect
+                    onClick={() => selectAllWeapons(false)}
+                    selected={app.weapons.length === 0 ? true : false}
+                    style={{ width: '50%' }}
+                >
+                    Deselect All
+                </ButtonSelect>
+            </div>
+            {initialWeapons.map((elem, index) => (
+                <ButtonSelect
+                    key={index}
+                    selected={app.weapons.includes(elem)}
+                    onClick={() => toggleWeapons(elem)}
+                >
+                    {elem}
+                </ButtonSelect>
+            ))}
+        </div>
         <h3>Availible Armor</h3>
-        {initialArmor.map((elem, index) => (
-            <ButtonSelect
-                key={index}
-                selected={app.armor.includes(elem)}
-                onClick={() => toggleArmor(elem)}
-            >
-                {elem}
-            </ButtonSelect>
-        ))}
+        <div className="box-list">
+            <div style={{ display: 'flex', width: '24%' }}>
+                <ButtonSelect
+                    onClick={() => selectAllArmor(true)}
+                    selected={app.armor.length === initialArmor.length ? true : false}
+                    style={{ width: '50%' }}
+                >
+                    Select All
+                </ButtonSelect>
+                <ButtonSelect
+                    onClick={() => selectAllArmor(false)}
+                    selected={app.armor.length === 0 ? true : false}
+                    style={{ width: '50%' }}
+                >
+                    Deselect All
+                </ButtonSelect>
+            </div>
+            {initialArmor.map((elem, index) => (
+                <ButtonSelect
+                    key={index}
+                    selected={app.armor.includes(elem)}
+                    onClick={() => toggleArmor(elem)}
+                >
+                    {elem}
+                </ButtonSelect>
+            ))}
+        </div>
+        <h3>Availible Equipement</h3>
+        <div className="box-list">
+            <div style={{ display: 'flex', width: '24%' }}>
+                <ButtonSelect
+                    onClick={() => selectAllEquipement(true)}
+                    selected={app.equipement.length === initialEquipement.length ? true : false}
+                    style={{ width: '50%' }}
+                >
+                    Select All
+                </ButtonSelect>
+                <ButtonSelect
+                    onClick={() => selectAllEquipement(false)}
+                    selected={app.equipement.length === 0 ? true : false}
+                    style={{ width: '50%' }}
+                >
+                    Deselect All
+                </ButtonSelect>
+            </div>
+            {initialEquipement.map((elem, index) => (
+                <ButtonSelect
+                    key={index}
+                    selected={app.equipement.includes(elem)}
+                    onClick={() => toggleEquipement(elem)}
+                >
+                    {elem}
+                </ButtonSelect>
+            ))}
+        </div>
         <h3>The magic button</h3>
         {props.children}
     </Sidebar>

@@ -42,5 +42,5 @@ export const equipement = [
     "Scissors",
     "Scroll (worth 50s to the right buyer)",
     "Sharp needle",
-    "Watersking (4 daus of water)"
-]
+    "Watersking (4 daus of water)",
+];

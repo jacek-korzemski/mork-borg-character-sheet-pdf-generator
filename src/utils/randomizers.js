@@ -12,6 +12,9 @@ const randomElementFromArray = (array) => {
 };
 
 const nRandomElementsFromArray = (array, n) => {
+    if (!array) {
+        return "-";
+    }
     return [...array].sort(() => 0.5 - Math.random()).slice(0, n);
 };
 

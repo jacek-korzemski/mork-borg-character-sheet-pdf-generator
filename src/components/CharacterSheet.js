@@ -50,9 +50,12 @@ const CharacterSheet = ({ player }) => {
 
             <div className="eq">
                 <h2 className="name">Equipement</h2>
-                <div>
+                <div className="equipement-list">
                     {player.equipement.map((elem, index) => (
-                        <React.Fragment key={index}>{elem}, </React.Fragment>
+                        <React.Fragment key={index}>
+                            {elem}
+                            {player.equipement.length - 1 !== index && ", "}
+                        </React.Fragment>
                     ))}
                 </div>
             </div>

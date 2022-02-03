@@ -35,6 +35,9 @@
     ]
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^5.16.2",
+    "@testing-library/react": "^12.1.2",
+    "react-test-renderer": "^17.0.2",
     "sonarlint": "^1.1.0"
   }
 }

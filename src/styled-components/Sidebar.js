@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 const Sidebar = styled.div`
     position: absolute;
@@ -8,13 +8,15 @@ const Sidebar = styled.div`
     height: 100%;
     background: white;
     transition: all 0.3s;
-    transform: ${props => props.open ? 'translateX(0)' : 'translateX(-301px)'};
+    transform: ${(props) => (props.open ? "translateX(0)" : "translateX(-301px)")};
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
     gap: 5px;
-    h1, h2, h3 {
+    h1,
+    h2,
+    h3 {
         margin: 0;
     }
     .box-list {
